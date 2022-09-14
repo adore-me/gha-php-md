@@ -1,0 +1,30 @@
+name: 'AdoreMe Tech PHP MD Composite Action'
+description: 'Run PHP MD'
+inputs:
+  php-image:
+    description: 'The PHP image to use'
+    required: true
+  report-path:
+    description: 'PHP MD report path'
+    required: true
+    default: './build/reports/php-pmd.xml'
+
+runs:
+  using: "composite"
+  steps:
+    - name: 'Run PMD'
+      run: $GITHUB_ACTION_PATH/check.sh
+      shell: bash
+      env:
+        INPUT_PHP_IMAGE: ${{ inputs.php-image }}
+        INPUT_PHPMD_REPORT_PATH: ${{ inputs.report-path }}
+    - name: 'Run PMD Report'
+      uses: jwgmeligmeyling/pmd-github-action@master
+      with:
+        name: 'PHP MD'
+        title: 'PHP MD report'
+        path: ${{ inputs.report-path }}
+    - name: 'Notify in PR'
+      run: |
+        echo 'PHP MD Complete'
+      shell: bash
