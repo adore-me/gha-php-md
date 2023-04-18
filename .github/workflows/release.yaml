@@ -8,6 +8,7 @@ on:
       - '.github/**'
       - 'README.md'
       - 'LICENSE'
+      - 'catalog-info.yaml'
 jobs:
   release-on-push:
     name: 'Release new version'
