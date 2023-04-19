@@ -13,6 +13,8 @@ if [ -z "$INPUT_PHP_IMAGE" ]; then
 fi
 
 echo -e "${BL}Info:${NC} Running PHP MD with image: ${GR}$INPUT_PHP_IMAGE${NC}"
+echo -e "${BL}Info:${NC} MD report path: ${GR}$INPUT_PHPMD_REPORT_PATH${NC}"
+echo -e "${BL}Info:${NC} Running command: ${GR}./vendor/bin/phpmd app/ xml phpmd.xml --reportfile ${INPUT_PHPMD_REPORT_PATH} --ignore-violations-on-exit${NC}"
 docker run \
     --platform linux/amd64 \
     -v "$PWD":/var/www \

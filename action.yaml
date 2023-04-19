@@ -22,7 +22,7 @@ runs:
         INPUT_PHP_IMAGE: ${{ inputs.php-image }}
         INPUT_PHPMD_REPORT_PATH: '${{ inputs.report-dir }}/${{ inputs.report-file-name }}'
     - name: 'Run PMD Report'
-      uses: jwgmeligmeyling/pmd-github-action@master
+      uses: adore-me/pmd-github-action@v0.0.1
       with:
         name: 'PHP MD'
         title: 'PHP MD report'
