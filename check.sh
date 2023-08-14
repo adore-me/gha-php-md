@@ -12,11 +12,23 @@ if [ -z "$INPUT_PHP_IMAGE" ]; then
   exit 1
 fi
 
+APP_DIR=""
+# Check if symfony.lock file exists
+if [ -f "symfony.lock" ]; then
+  echo -e "${BL}Info:${NC} Symfony framework detected. Setting APP_DIR to 'src'${NC}"
+  APP_DIR="src"
+else
+  echo -e "${BL}Info:${NC} Defaulting to Laravel framework. Setting APP_DIR to 'app'${NC}"
+  APP_DIR="app"
+fi
+
+CMD="./vendor/bin/phpmd ${APP_DIR}/ xml phpmd.xml --reportfile ${INPUT_PHPMD_REPORT_PATH} --ignore-violations-on-exit"
+
 echo -e "${BL}Info:${NC} Running PHP MD with image: ${GR}$INPUT_PHP_IMAGE${NC}"
 echo -e "${BL}Info:${NC} MD report path: ${GR}$INPUT_PHPMD_REPORT_PATH${NC}"
-echo -e "${BL}Info:${NC} Running command: ${GR}./vendor/bin/phpmd app/ xml phpmd.xml --reportfile ${INPUT_PHPMD_REPORT_PATH} --ignore-violations-on-exit${NC}"
+echo -e "${BL}Info:${NC} Running command: ${GR}${CMD}${NC}"
 docker run \
     --platform linux/amd64 \
     -v "$PWD":/var/www \
     "$INPUT_PHP_IMAGE" \
-    "/bin/bash" "-c" "./vendor/bin/phpmd app/ xml phpmd.xml --reportfile ${INPUT_PHPMD_REPORT_PATH} --ignore-violations-on-exit"
+    "/bin/bash" "-c" "${CMD}"
