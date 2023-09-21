@@ -4,11 +4,12 @@
 Run PHP mess detector with custom PHP image.
 
 ## Inputs
-| Key                  | Required | Default         | Description                                                                                    |
-|----------------------|----------|-----------------|------------------------------------------------------------------------------------------------|
-| **php-image**        | **true** | `N/A`           | PHP image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
-| **report-dir**       | **true** | `build/reports` | Report file directory (no trailing `/`).                                                       |
-| **report-file-name** | **true** | `php-md.xml`    | Report file name.                                                                              |
+| Key                  | Required  | Default         | Description                                                                                    |
+|----------------------|-----------|-----------------|------------------------------------------------------------------------------------------------|
+| **php-image**        | **true**  | `N/A`           | PHP image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
+| **report-dir**       | **true**  | `build/reports` | Report file directory (no trailing `/`).                                                       |
+| **report-file-name** | **true**  | `php-md.xml`    | Report file name.                                                                              |
+| **app-dir**          | **false** | ``              | Source directory (no trailing `/`). When empty will try to guess if is `src` or `app`.         |
 
 ## Outputs
 **N/A**
