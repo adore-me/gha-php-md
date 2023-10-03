@@ -27,7 +27,7 @@ runs:
         INPUT_PHPMD_REPORT_PATH: '${{ inputs.report-dir }}/${{ inputs.report-file-name }}'
         INPUT_APP_DIR: ${{ inputs.app-dir }}
     - name: 'Run PMD Report'
-      uses: adore-me/pmd-github-action@v0.0.1
+      uses: adore-me/pmd-github-action@v1.0.0
       with:
         name: 'PHP MD'
         title: 'PHP MD report'
