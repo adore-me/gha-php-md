@@ -27,7 +27,7 @@ else
   APP_DIR="$INPUT_APP_DIR"
 fi
 
-CMD="./vendor/bin/phpmd ${APP_DIR}/ xml phpmd.xml --reportfile ${INPUT_PHPMD_REPORT_PATH} --ignore-violations-on-exit"
+CMD="./vendor/bin/phpmd ${APP_DIR} xml phpmd.xml --reportfile ${INPUT_PHPMD_REPORT_PATH} --ignore-violations-on-exit"
 
 echo -e "${BL}Info:${NC} Running PHP MD with image: ${GR}$INPUT_PHP_IMAGE${NC}"
 echo -e "${BL}Info:${NC} MD report path: ${GR}$INPUT_PHPMD_REPORT_PATH${NC}"
